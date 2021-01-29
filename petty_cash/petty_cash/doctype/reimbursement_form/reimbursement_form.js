@@ -1,5 +1,6 @@
 // Copyright (c) 2021, Admin and contributors
 // For license information, please see license.txt
+//this is the fist app
 
 function remove_rows(data, i, frm) {
 
