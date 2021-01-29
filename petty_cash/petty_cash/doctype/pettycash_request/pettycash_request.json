@@ -1,0 +1,267 @@
+{
+ "actions": [],
+ "creation": "2021-01-08 15:11:24.632303",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "request_date",
+  "type_of_request",
+  "reason_for_request",
+  "amount",
+  "column_break",
+  "emply_code",
+  "request_by",
+  "cost_center",
+  "approvle_details_section",
+  "department_approval",
+  "fin_approval",
+  "column_break_12",
+  "department_approval_by",
+  "finance_approval_by",
+  "column_break_13",
+  "dep_date",
+  "fin_date",
+  "cansellation_details_section",
+  "cancled_rqst",
+  "cancelled_by",
+  "cancelled_reason",
+  "column_break_22",
+  "cancle_date",
+  "reimbursement_details_section",
+  "reimbursement_no",
+  "reimbursement_date",
+  "column_break_27",
+  "reimburse_by"
+ ],
+ "fields": [
+  {
+   "default": "Today",
+   "fieldname": "request_date",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Request Date"
+  },
+  {
+   "fieldname": "type_of_request",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Type of Request"
+  },
+  {
+   "fieldname": "reason_for_request",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Reason for Request",
+   "options": "Travelling\nFuel for vehicle\nOffice stationaries\nDaily Wages"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Amount"
+  },
+  {
+   "fieldname": "column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "emply_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Emp Code"
+  },
+  {
+   "fieldname": "request_by",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Request by"
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Cost Center",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "approvle_details_section",
+   "fieldtype": "Section Break",
+   "in_preview": 1,
+   "label": "Approvle Details"
+  },
+  {
+   "default": "0",
+   "fieldname": "department_approval",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Department Approval",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "fin_approval",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "FInance Approval"
+  },
+  {
+   "fieldname": "column_break_12",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "department_approval_by",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Department Approval By",
+   "read_only": 1
+  },
+  {
+   "fieldname": "finance_approval_by",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Finance Approval By"
+  },
+  {
+   "fieldname": "column_break_13",
+   "fieldtype": "Column Break",
+   "in_preview": 1
+  },
+  {
+   "fieldname": "fin_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Date"
+  },
+  {
+   "fieldname": "dep_date",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cansellation_details_section",
+   "fieldtype": "Section Break",
+   "in_preview": 1,
+   "label": "Cansellation Details"
+  },
+  {
+   "default": "0",
+   "fieldname": "cancled_rqst",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Cancelled "
+  },
+  {
+   "fieldname": "cancelled_by",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Cancelled by",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cancelled_reason",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Cancelled Reason"
+  },
+  {
+   "fieldname": "column_break_22",
+   "fieldtype": "Column Break",
+   "in_preview": 1
+  },
+  {
+   "fieldname": "cancle_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Date"
+  },
+  {
+   "fieldname": "reimbursement_details_section",
+   "fieldtype": "Section Break",
+   "in_preview": 1,
+   "label": "Reimbursement Details"
+  },
+  {
+   "fieldname": "reimbursement_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Reimbursement form number"
+  },
+  {
+   "fieldname": "reimbursement_date",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Reimbursement Date"
+  },
+  {
+   "fieldname": "column_break_27",
+   "fieldtype": "Column Break",
+   "in_preview": 1
+  },
+  {
+   "fieldname": "reimburse_by",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Reimburse by "
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2021-01-21 15:38:21.286976",
+ "modified_by": "Administrator",
+ "module": "Petty Cash",
+ "name": "PettyCash Request",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

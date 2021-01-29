@@ -1,0 +1,119 @@
+{
+ "actions": [],
+ "creation": "2021-01-08 15:41:48.258912",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "claim_details_section",
+  "request_date",
+  "journal_entry",
+  "load_pending_request",
+  "column_break_4",
+  "emp_code",
+  "send_for_claim",
+  "request_details_section",
+  "department_approval_by",
+  "finance_approval_by",
+  "reimbursement_table"
+ ],
+ "fields": [
+  {
+   "fieldname": "claim_details_section",
+   "fieldtype": "Section Break",
+   "in_preview": 1,
+   "label": "Claim Details"
+  },
+  {
+   "fieldname": "request_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Request Date"
+  },
+  {
+   "fieldname": "load_pending_request",
+   "fieldtype": "Button",
+   "in_preview": 1,
+   "label": "Load Pending Request"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break",
+   "in_preview": 1
+  },
+  {
+   "fieldname": "emp_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Emp Code",
+   "options": "User"
+  },
+  {
+   "fieldname": "send_for_claim",
+   "fieldtype": "Button",
+   "in_preview": 1,
+   "label": "Send for Claim"
+  },
+  {
+   "fieldname": "request_details_section",
+   "fieldtype": "Section Break",
+   "in_preview": 1,
+   "label": "Request Details"
+  },
+  {
+   "columns": 2,
+   "fieldname": "reimbursement_table",
+   "fieldtype": "Table",
+   "in_preview": 1,
+   "options": "Reimbursement Table",
+   "width": "1"
+  },
+  {
+   "fieldname": "department_approval_by",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Department Approval By"
+  },
+  {
+   "fieldname": "finance_approval_by",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Finance Approval By"
+  },
+  {
+   "fieldname": "journal_entry",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Journal Entry"
+  }
+ ],
+ "links": [],
+ "modified": "2021-01-21 17:43:44.905387",
+ "modified_by": "Administrator",
+ "module": "Petty Cash",
+ "name": "Reimbursement Form",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
