@@ -75,25 +75,28 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "in_preview": 1,
-   "label": "Department Approval By"
+   "label": "Department Approval By",
+   "read_only": 1
   },
   {
    "fieldname": "finance_approval_by",
    "fieldtype": "Data",
    "in_list_view": 1,
    "in_preview": 1,
-   "label": "Finance Approval By"
+   "label": "Finance Approval By",
+   "read_only": 1
   },
   {
    "fieldname": "journal_entry",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "in_list_view": 1,
    "in_preview": 1,
-   "label": "Journal Entry"
+   "label": "Journal Entry",
+   "options": "Journal Entry"
   }
  ],
  "links": [],
- "modified": "2021-01-21 17:43:44.905387",
+ "modified": "2021-02-10 14:07:43.343176",
  "modified_by": "Administrator",
  "module": "Petty Cash",
  "name": "Reimbursement Form",

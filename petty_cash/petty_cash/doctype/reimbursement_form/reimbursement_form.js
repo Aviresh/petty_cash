@@ -2,6 +2,8 @@
 // For license information, please see license.txt
 //this is the fist app
 
+var journal_entry = this;
+
 function remove_rows(data, i, frm) {
 
 	frm.get_field("reimbursement_table").grid.grid_rows[i].remove();
@@ -50,12 +52,17 @@ function finance_approval_details(data,frm){
 	});
 }
 
+function update_current_reimbursement_form(data,frm){
+	frappe.db.set_value("Reimbursement Form", frm.doc.name,"finance_approval_by", frappe.session.user_email);
+	frm.refresh();
+}
+
 function create_journal_entry(data, frm) {
 
 	let je = {};
 	var tot_amount = 0;
 	var accounts = [];
-	var journal_entry;
+	var journal_entry_no;
 
 	//append the petty cash details
 	$.each(data.reimbursement_table, function (i, d) {
@@ -75,7 +82,7 @@ function create_journal_entry(data, frm) {
 	//append the cash account with total amount
 	accounts[index_count] = {
 		"doctype": "Journal Entry Account",
-		"account": "1110 - Cash - ABCMC",
+		"account": "Cash In Hand - ABC",
 		"party_type": "Employee",
 		"debit_in_account_currency": tot_amount,
 		"credit_in_account_currency": 0,
@@ -99,15 +106,16 @@ function create_journal_entry(data, frm) {
 				"callback": (r) => {
 					
 					//write Journal Entry no in Reim Form
-					journal_entry = r.message.name;
-					frappe.db.set_value("Reimbursement Form", frm.doc.name, "journal_entry", journal_entry);
+					journal_entry_no = r.message.name;
+					frappe.db.set_value("Reimbursement Form", frm.doc.name,"journal_entry", journal_entry_no);
 					frm.save();
-					alert("New Journel Entry " + r.message.name + " was created successfully");
+					alert("New Journel Entry " + frm.doc.name + " was created successfully");
 				}
 			});
 		});
 
 	finance_approval_details(data,frm);
+	update_current_reimbursement_form(data,frm);
 }
 
 frappe.ui.form.on('Reimbursement Form', {
@@ -115,6 +123,7 @@ frappe.ui.form.on('Reimbursement Form', {
 	validate: function (frm, cdt, cdn) {
 		var data = locals[cdt][cdn];
 		var row_count = data.reimbursement_table.length;
+		var flag = true;
 
 		if (frm.doc.__islocal == 1) {
 			//write accepeted details
@@ -123,18 +132,24 @@ frappe.ui.form.on('Reimbursement Form', {
 			//remove unselected rows before saving
 			$.each(data.reimbursement_table, function (i, d) {
 				if (typeof data.reimbursement_table[i].__checked === 'undefined' || !data.reimbursement_table[i].__checked == 1) {
-					remove_rows(data, i, frm);
+					remove_rows(this.data, i, frm);
 				}
 			});
+			
 			//check whether set the account type
 			$.each(data.reimbursement_table, function (i, d) {
 				if (!data.reimbursement_table[i].acc_debit) {
-					frappe.msgprint("Enter account type for PettyCash No {0}", [data.reimbursement_table[i].reqst_no]);
+					frappe.msgprint("Enter account type for PettyCash No " + data.reimbursement_table[i].reqst_no);
+					frappe.validated = false;
+					flag = false;
 				}
 			});
 
-			// update appraval details
-			department_approval_details(frm,data);
+			// update appraval details,if only save the form
+			if(flag == true){
+				department_approval_details(frm,data);
+			}
+			
 		}
 	},
 	onload_post_render: function (frm, cdt, cdn) {
@@ -146,15 +161,11 @@ frappe.ui.form.on('Reimbursement Form', {
 
 			//disable, if form has been saved and approved by finance dep
 			if(frm.doc.finance_approval_by){
-				// frm.set_df_property("send_for_claim", "hidden", true); 
+				frm.set_df_property("send_for_claim", "hidden", true); 
 			}
 
 			//disable add new rows and delete lines
 			frm.set_df_property("reimbursement_table", "read_only", 1);
-
-			//disable approved details
-			frm.set_df_property("department_approval_by", "read_only", 1);
-			frm.set_df_property("finance_approval_by", "read_only", 1);
 
 			//hide button,if doctype has been saved already
 			frm.set_df_property("load_pending_request", "hidden", true);
@@ -323,11 +334,11 @@ frappe.ui.form.on('Reimbursement Form', {
 				method: "petty_cash.petty_cash.doctype.reimbursement_form.reimbursement_form.petty_cash_req4",
 				callback: function (data) {
 					if (data.message == 0) {
-						alert("There is no data for the seection");
+						alert("There is no data for the selection");
 					}
 					else {
 						
-						console.log(data.message);
+						// console.log(data.message);
 						$.each(data.message, function (i, d) {
 							var child = frappe.model.add_child(frm.doc, "Reimbursement Table", "reimbursement_table");
 							child.reqst_no = d[0];

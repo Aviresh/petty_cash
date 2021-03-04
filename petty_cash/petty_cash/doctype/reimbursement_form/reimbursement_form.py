@@ -28,26 +28,26 @@ def create_journel_entry():
 @frappe.whitelist()
 def petty_cash_req(start_date, emp_code):
 		# subject = frappe.db.get_value(frappe.db.sql("""UPDATE `tabtesto` SET `Finished_Goods__I` = '{qty}' WHERE `item_name` LIKE '%{item_code}%'""".format(qty=rt["actual_qty"], item_name=rt["item_code"]), as_list=True))
-		subject = frappe.db.sql("""Select * from `tabPettyCash Request` b where b.request_date = %s and b.emply_code = %s and b.department_approval = %s""", (start_date , emp_code,0))
+		subject = frappe.db.sql("""Select * from `tabPettyCash Request` b where b.request_date = %s and b.emply_code = %s and b.department_approval = %s and b.cancled_rqst = %s""", (start_date , emp_code,0,0))
 		subject = check_petty_cash_req_empty(subject)
 		return subject
 	
 
 @frappe.whitelist()
 def petty_cash_req2(emp_code):
-		subject = frappe.db.sql("""Select * from `tabPettyCash Request` b where b.emply_code = %s and b.department_approval = %s""", (emp_code,0))
+		subject = frappe.db.sql("""Select * from `tabPettyCash Request` b where b.emply_code = %s and b.department_approval = %s and b.cancled_rqst = %s""", (emp_code,0,0))
 		subject = check_petty_cash_req_empty(subject)
 		return subject
 
 @frappe.whitelist()
 def petty_cash_req3(start_date):
-		subject = frappe.db.sql("""Select * from `tabPettyCash Request` b where b.request_date = %s and b.department_approval = %s""", (start_date,0) )
+		subject = frappe.db.sql("""Select * from `tabPettyCash Request` b where b.request_date = %s and b.department_approval = %s and b.cancled_rqst = %s""", (start_date,0,0) )
 		subject = check_petty_cash_req_empty(subject)
 		return subject
 
 @frappe.whitelist()
 def petty_cash_req4():
-		subject = frappe.db.sql("""Select * from `tabPettyCash Request` b where b.department_approval = %s""",0)
+		subject = frappe.db.sql("""Select * from `tabPettyCash Request` b where b.department_approval = %s and b.cancled_rqst = %s""",(0,0))
 		subject = check_petty_cash_req_empty(subject)
 		return subject
 

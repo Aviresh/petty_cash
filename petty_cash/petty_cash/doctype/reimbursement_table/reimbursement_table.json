@@ -55,7 +55,8 @@
    "in_list_view": 1,
    "in_preview": 1,
    "label": "Acc Debit",
-   "options": "Account"
+   "options": "Account",
+   "reqd": 1
   },
   {
    "fieldname": "request_by",
@@ -73,7 +74,7 @@
   }
  ],
  "istable": 1,
- "modified": "2021-01-10 01:23:07.960368",
+ "modified": "2021-02-01 18:09:42.340273",
  "modified_by": "Administrator",
  "module": "Petty Cash",
  "name": "Reimbursement Table",
